@@ -3,17 +3,17 @@ package cidade;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Seção {
+public class Secao {
     public boolean isCruzamento = false;
-    public ArrayList<Direção> direcoesPossiveis;
+    public ArrayList<Direcao> direcoesPossiveis;
     public int x, y;
     public Carro carro;
     public int semaforoTimer, inc = 1;
     public int contador = 0;
     public boolean[] isSemaforoAberto;
 
-    public static Seção instancia(Direção direcao, int x, int y) {
-        Seção secao = new Seção();
+    public static Secao instancia(Direcao direcao, int x, int y) {
+        Secao secao = new Secao();
         secao.direcoesPossiveis = new ArrayList<>();
         secao.direcoesPossiveis.add(direcao);
         secao.x = x;
@@ -21,8 +21,8 @@ public class Seção {
         return secao;
     }
 
-    public static Seção instanciaCruzamento(Direção[] direcoes, int x, int y, int semaforo) {
-        Seção secao = new Seção();
+    public static Secao instanciaCruzamento(Direcao[] direcoes, int x, int y, int semaforo) {
+        Secao secao = new Secao();
         secao.direcoesPossiveis = new ArrayList<>();
         secao.direcoesPossiveis.addAll(Arrays.asList(direcoes));
         secao.isCruzamento = true;
@@ -52,8 +52,8 @@ public class Seção {
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof Seção) {
-            Seção s = (Seção)o;
+        if (o instanceof Secao) {
+            Secao s = (Secao)o;
             return s.x == this.x && s.y == this.y;
         }
         return false;

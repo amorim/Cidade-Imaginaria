@@ -9,7 +9,7 @@ public class GA {
     private int n, p, pe, pm, K;
     private double rhoe;
     private Decodificador decodificador;
-    private ArrayList<População> anterior = new ArrayList<>(), atual = new ArrayList<>();
+    private ArrayList<Populacao> anterior = new ArrayList<>(), atual = new ArrayList<>();
 
     public GA(int n, int p, double pe, double pm, double rhoe, Decodificador decodificador, int K) {
         this.n = n;
@@ -20,24 +20,24 @@ public class GA {
         this.decodificador = decodificador;
         this.K = K;
         for (int i = 0; i < K; i++) {
-            População população = new População(n, p);
-            atual.add(população);
-            inicializar(população);
-            anterior.add(população);
+            Populacao populacao = new Populacao(n, p);
+            atual.add(populacao);
+            inicializar(populacao);
+            anterior.add(populacao);
         }
     }
 
-    private void inicializar(População população) {
+    private void inicializar(Populacao populacao) {
         Random rand = new Random((new Date()).getTime());
         for (int j = 0; j < p; j++)
             for (int k = 0; k < n; k++)
-                população.setAlelo(j, k, rand.nextDouble());
+                populacao.setAlelo(j, k, rand.nextDouble());
         for (int j = 0; j < p; j++) {
-            ArrayList<Double> cromossomo = população.getCromossomoI(j);
+            ArrayList<Double> cromossomo = populacao.getCromossomoI(j);
             double aptidao = decodificador.decodificar(cromossomo);
-            população.setAptidao(j, aptidao);
+            populacao.setAptidao(j, aptidao);
         }
-        população.ordenarPorAptidao();
+        populacao.ordenarPorAptidao();
     }
 
     public double getMelhorAptidao() {
@@ -52,7 +52,7 @@ public class GA {
         for (int i = 0; i < geracoes; i++) {
             for (int j = 0; j < K; j++) {
                 evolucao(atual.get(j), anterior.get(j));
-                População pop = atual.get(j);
+                Populacao pop = atual.get(j);
                 atual.set(j, anterior.get(i));
                 anterior.set(j, pop);
             }
@@ -82,7 +82,7 @@ public class GA {
         }
     }
 
-    private void evolucao(População atual, População proxima) {
+    private void evolucao(Populacao atual, Populacao proxima) {
         int i = 0;
         int j;
         while (i < pe) {

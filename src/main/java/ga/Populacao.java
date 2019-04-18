@@ -3,7 +3,7 @@ package ga;
 import javafx.util.Pair;
 import java.util.ArrayList;
 
-public class População {
+public class Populacao {
 
     ArrayList<Pair<Double, Integer>> aptidao;
     ArrayList<ArrayList<Double>> populacao;
@@ -18,7 +18,7 @@ public class População {
         return populacao.get(chave);
     }
 
-    public População(int n, int p) {
+    public Populacao(int n, int p) {
         populacao = new ArrayList<>();
         for (int i = 0; i < p; i++) {
             ArrayList<Double> cromossomos = new ArrayList<>();
