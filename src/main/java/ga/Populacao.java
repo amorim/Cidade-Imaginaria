@@ -1,6 +1,8 @@
 package ga;
 
-import javafx.util.Pair;
+import org.apache.commons.lang3.tuple.MutablePair;
+import org.apache.commons.lang3.tuple.Pair;
+
 import java.util.ArrayList;
 
 public class Populacao {
@@ -29,7 +31,7 @@ public class Populacao {
         }
         aptidao = new ArrayList<>();
         for (int j = 0; j < p; j++) {
-            Pair pair = new Pair(0.0, j);
+            Pair pair = new MutablePair(0.0, j);
             aptidao.add(pair);
         }
     }
@@ -51,7 +53,7 @@ public class Populacao {
     }
 
     public void setAptidao(int i, double f) {
-        Pair<Double, Integer> p = new Pair<>(f, i);
+        Pair<Double, Integer> p = new MutablePair<>(f, i);
         aptidao.set(i, p);
     }
 
